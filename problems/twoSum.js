@@ -1,5 +1,5 @@
+//brute force
 function twoNumberSum(array, targetSum) {
-  // Write your code here.
 	arr = [];
 	
 	for(let i = 0;i < array.length; i++) {
@@ -7,6 +7,26 @@ function twoNumberSum(array, targetSum) {
 			if(array[i] + array[j] === targetSum) {
 				arr.push(array[i], array[j]);
 			}
+		}
+	}
+	return arr;
+}
+
+
+//refactored approach
+function twoNumberSum(array, targetSum) {
+	let arr = [];
+	let obj = {};
+	let value;
+	
+	for(let i = 0; i < array.length; i++) {
+		value = targetSum - array[i];
+		if(obj[value] === true) {
+			arr.push(value, array[i]);
+			break;
+		}
+		else {
+			obj[array[i]] = true;
 		}
 	}
 	return arr;
